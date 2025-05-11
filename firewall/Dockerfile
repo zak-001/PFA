@@ -1,12 +1,16 @@
-FROM ubuntu:22.04
+FROM debian:bookworm
 
 # Install required packages
 RUN apt-get update && \
-    apt-get install -y nftables iproute2 iputils-ping && \
-    apt-get clean && rm -rf /var/lib/apt/lists/*
+    apt-get install -y --no-install-recommends \
+        nftables \
+        iproute2 \
+        iputils-ping \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Copy the nftables config into the container
+# Copy your nftables rule set into the container
 COPY nftables.conf /etc/nftables.conf
 
-# Run the nftables rules at container start
+# Run nftables rules at container start
 CMD ["nft", "-f", "/etc/nftables.conf"]
+
