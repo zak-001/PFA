@@ -1,7 +1,13 @@
-version: '3.8'
+version: '3.9'
 
 services:
+  dvwa:
+    image: vulnerables/web-dvwa
+    expose:
+      - "80"
   firewall:
   waf:
+  admin-ui:
 
 networks:
+volumes:

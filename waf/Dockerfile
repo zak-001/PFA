@@ -1,8 +1,8 @@
 FROM debian:bookworm
 
 RUN apt-get update && \
-    apt-get install -y nginx libnginx-mod-security modsecurity-crs && \
-    apt-get clean
+    apt-get install -y --no-install-recommends nginx libnginx-mod-security modsecurity-crs && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
 
 COPY modsecurity.conf /etc/modsecurity/
 COPY nginx.conf /etc/nginx/nginx.conf
