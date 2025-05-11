@@ -3,6 +3,7 @@
 - [ ] make all dockerfiles
 - [ ] put primary code for admin-ui
 - [ ] configure the network in docker-compose (left to the end)
+- [ ] add volumes (will be needed for admin to save configs)
 
 note :
 - nothing is final yet
