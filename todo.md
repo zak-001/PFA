@@ -4,4 +4,6 @@
 - [ ] put primary code for admin-ui
 - [ ] configure the network in docker-compose (left to the end)
 
-note : nothing is final yet
+note :
+- nothing is final yet
+- remember to open files for more todo
