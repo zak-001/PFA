@@ -1,13 +1,51 @@
 version: '3.9'
 
 services:
-  dvwa:
-    image: vulnerables/web-dvwa
-    expose:
-      - "80"
+#    dvwa:
+#     image: vulnerables/web-dvwa
+#     container_name: dvwa
+#     networks:
+#       - vulnerable
+#     expose:
+#       - "80"
+
+#   bwapp:
+#     image: raesene/bwapp
+#     container_name: bwapp
+#     networks:
+#       - vulnerable
+#     expose:
+#       - "80"
+
+#   mutillidae:
+#     image: citizenstig/nowasp
+#     container_name: mutillidae
+#     networks:
+#       - vulnerable
+#     expose:
+#       - "80"
+
+#   juice-shop:
+#     image: bkimminich/juice-shop
+#     container_name: juice-shop
+#     networks:
+#       - vulnerable
+#     expose:
+#       - "3000"
+
+#   webgoat:
+#     image: webgoat/webgoat
+#     container_name: webgoat
+#     networks:
+#       - vulnerable
+#     expose:
+#       - "8080"
+  
   firewall:
   waf:
   admin-ui:
 
 networks:
+  - vulnerable:
+      driver: bridge
 volumes:
