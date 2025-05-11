@@ -8,3 +8,4 @@
 note :
 - nothing is final yet
 - remember to open files for more todo
+- consider git branch for testing before merging into main
