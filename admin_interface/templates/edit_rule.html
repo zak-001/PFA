@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Edit Rule {{ rule.rule_id }}</title>
+</head>
+<body>
+  <h1>Edit Rule {{ rule.rule_id }}</h1>
+
+  <form method="post">
+    <label>Description:</label><br>
+    <input type="text" name="description" value="{{ rule.description }}"><br><br>
+
+    <label>Severity:</label><br>
+    <select name="severity">
+      {% for level in ['CRITICAL', 'HIGH', 'MEDIUM', 'LOW'] %}
+      <option value="{{ level }}" {% if rule.severity == level %}selected{% endif %}>{{ level }}</option>
+      {% endfor %}
+    </select><br><br>
+
+    <label>Content:</label><br>
+    <textarea name="content" rows="6" cols="60">{{ rule.content }}</textarea><br><br>
+
+    <button type="submit">Save</button>
+    <a href="{{ url_for('waf.list_rules') }}">Cancel</a>
+  </form>
+</body>
+</html>

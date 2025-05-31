@@ -1,0 +1,6 @@
+remember to reload nginx
+add errors if not done in front end for checkstr ...
+use set instead of any
+create a file called - modsecurity_crs_15_customrules.conf and place it in the same directory as the Core rules files.
+add rule files
+update template fields

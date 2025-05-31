@@ -1,0 +1,4 @@
+flask
+mysqlclient
+watchdog
+sqlalchemy

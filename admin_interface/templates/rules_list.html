@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ModSecurity Rules</title>
+</head>
+<body>
+    <form method="get">
+        <select name="severity">
+            <option value="">All Severities</option>
+            <option value="CRITICAL">CRITICAL</option>
+            <option value="HIGH">HIGH</option>
+            <option value="MEDIUM">MEDIUM</option>
+            <option value="LOW">LOW</option>
+        </select>
+        <select name="enabled">
+            <option value="">All</option>
+            <option value="true">Enabled</option>
+            <option value="false">Disabled</option>
+        </select>
+        <button type="submit">Filter</button>
+    </form>
+
+    <h1>ModSecurity Rules</h1>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Description</th>
+            <th>Severity</th>
+            <th>Status</th>
+            <th>Rule</th>
+        </tr>
+        {% for rule in rules %}
+        <tr>
+            <td>{{ rule.rule_id }}</td>
+            <td>{{ rule.description }}</td>
+            <td>{{ rule.severity }}</td>
+            <td>{{ 'Enabled' if rule.enabled else 'Disabled' }}</td>
+            <td><pre>{{ rule.content }}</pre></td>
+            <td><a href="{{ url_for('waf.edit_rule', rule_id=rule.id) }}">Edit</a></td>
+            <form action="{{ url_for('waf.toggle_rule', rule_id=rule.id) }}" method="POST">
+                <button type="submit">
+                    {{ 'Disable' if rule.enabled else 'Enable' }}
+                </button>
+            </form>
+
+        </tr>
+        {% endfor %}
+    </table>
+    <div>
+    {% if pagination.has_prev %}
+        <a href="{{ url_for('waf.list_rules', page=pagination.prev_num, severity=severity_filter, enabled=enabled_filter) }}">Previous</a>
+    {% endif %}
+
+    Page {{ pagination.page }} of {{ pagination.pages }}
+
+    {% if pagination.has_next %}
+        <a href="{{ url_for('waf.list_rules', page=pagination.next_num, severity=severity_filter, enabled=enabled_filter) }}">Next</a>
+    {% endif %}
+    </div>
+
+</body>
+</html>
